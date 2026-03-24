@@ -1,0 +1,16 @@
+<entero>           ::= "0" | <negativo> <digito_sin_cero> <digitos> | <digito_sin_cero> <digitos>
+<flotante>         ::= <entero> <punto> <digitos_obligatorios>
+<bool>             ::= "true" | "false" | "1" | "0"
+<string>           ::= "\"" <contenido_string> "\"" | "\"" "\""
+<contenido_string> ::= <char> | <char> <contenido_string>
+<digitos>          ::= <digito> | <digito> <digitos>
+<char>             ::= <letra> | <digito> | <simbolo> | " "
+<letra>           ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+<digito>            ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<simbolo>           ::= "!" | "@" | "#" | "$" | "%" | "^" | "&" | "*" | "(" | ")"
+<digito_sin_cero>  ::= "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<digitos_obligatorios> ::= <digito> | <digito> <digitos_obligatorios>
+<negativo>         ::= "-"
+<punto>            ::= "."
+<corchete_derecho> ::= "["
+<corchete_izquierdo> ::= "]"
