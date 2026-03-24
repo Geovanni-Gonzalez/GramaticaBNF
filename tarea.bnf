@@ -1,16 +1,73 @@
-<entero>           ::= "0" | <negativo> <digito_sin_cero> <digitos> | <digito_sin_cero> <digitos>
-<flotante>         ::= <entero> <punto> <digitos_obligatorios>
-<bool>             ::= "true" | "false" | "1" | "0"
-<string>           ::= "\"" <contenido_string> "\"" | "\"" "\""
-<contenido_string> ::= <char> | <char> <contenido_string>
-<digitos>          ::= <digito> | <digito> <digitos>
-<char>             ::= <letra> | <digito> | <simbolo> | " "
-<letra>           ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
-<digito>            ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
-<simbolo>           ::= "!" | "@" | "#" | "$" | "%" | "^" | "&" | "*" | "(" | ")"
-<digito_sin_cero>  ::= "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<programa>           ::= <sentencia> | <sentencia> <programa>
+
+<bloque>             ::= <inicio_bloque> <programa> <fin_bloque>
+
+<sentencia>          ::= <creacion_variable> 
+                       | <asignacion_variable> 
+                       | <asignacion_arreglo>
+                       | <expresion>
+                       | <bloque>
+
+<creacion_variable>  ::= <tipo> <separador> <nombre_variable>
+<asignacion_variable> ::= <nombre_variable> <flecha_asig> <expresion>
+<asignacion_arreglo>  ::= <acceso_indice> <asignador_arr> <expresion>
+
+<tipo>               ::= "int" | "float" | "bool" | "string" | "arr_int" | "arr_float"
+
+<expresion>          ::= <valor> 
+                       | <acceso_indice> 
+                       | <operacion_fraccionaria> 
+                       | <operacion_exponencial>
+
+<acceso_indice>       ::= <nombre_variable> <abrir_indice> <entero> <cerrar_indice>
+
+<arreglo_bidimensional_entero>   ::= <corchete_izq> <filas_int> <corchete_der>
+<arreglo_bidimensional_flotante> ::= <corchete_izq> <filas_float> <corchete_der>
+
+<filas_int>          ::= <fila_int> | <fila_int> <coma> <filas_int>
+<filas_float>        ::= <fila_float> | <fila_float> <coma> <filas_float>
+
+<fila_int>           ::= <corchete_izq> <elementos_int> <corchete_der>
+<fila_float>         ::= <corchete_izq> <elementos_float> <corchete_der>
+
+<elementos_int>      ::= <entero> | <entero> <coma> <elementos_int>
+<elementos_float>    ::= <flotante> | <flotante> <coma> <elementos_float>
+
+<nombre_variable>    ::= <letra> | <letra> <contenido_nombre>
+<contenido_nombre>   ::= <letra> <contenido_nombre> | <digito> <contenido_nombre> | <letra> | <digito>
+
+<numero>             ::= <entero> | <flotante>
+<operacion_fraccionaria> ::= <numero> <fraccion> <numero>
+<operacion_exponencial>  ::= <entero> <exponencial> <digitos>
+
+<entero>             ::= "0" | <negativo> <digito_sin_cero> <digitos> | <digito_sin_cero> <digitos>
+<flotante>           ::= <entero> <punto> <digitos_obligatorios>
+<bool>               ::= "true" | "false" | "1" | "0"
+<string>             ::= "\"" <contenido_string> "\"" | "\"" "\""
+
+<valor>              ::= <entero> | <flotante> | <bool> | <string> | <arreglo_bidimensional_entero> | <arreglo_bidimensional_flotante>
+
+<contenido_string>   ::= <char> | <char> <contenido_string>
+<digitos>            ::= <digito> | <digito> <digitos>
 <digitos_obligatorios> ::= <digito> | <digito> <digitos_obligatorios>
-<negativo>         ::= "-"
-<punto>            ::= "."
-<corchete_derecho> ::= "["
-<corchete_izquierdo> ::= "]"
+
+<char>               ::= <letra> | <digito> | <simbolo> | " "
+<letra>              ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+<digito>             ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<digito_sin_cero>    ::= "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<simbolo>            ::= "!" | "@" | "#" | "$" | "%" | "^" | "&" | "*" | "(" | ")"
+
+<negativo>           ::= "-"
+<punto>              ::= "."
+<coma>               ::= ","
+<separador>          ::= "~"
+<flecha_asig>        ::= "<" "-"
+<corchete_izq>       ::= "["
+<corchete_der>       ::= "]"
+<abrir_indice>       ::= "<" "<"
+<cerrar_indice>      ::= ">" ">"
+<exponencial>        ::= "e"
+<fraccion>           ::= "/"
+<asignador_arr>      ::= "|" ":" ":" "|"
+<inicio_bloque>      ::= "|" ":"
+<fin_bloque>         ::= ":" "|"
