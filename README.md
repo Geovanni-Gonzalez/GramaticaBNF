@@ -1,7 +1,7 @@
 # Gramática BNF para Configuración de Microchips 🚀
 > **Curso:** Compiladores e Intérpretes  
 > **Institución:** Tecnológico de Costa Rica (TEC)  
-> **Estudiante:** [Tu Nombre]  
+> **Estudiante:** Geovanni González Aguilar
 > **Profesor:** Allan Rodríguez  
 
 ## 📌 Descripción del Proyecto
