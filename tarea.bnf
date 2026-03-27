@@ -24,7 +24,7 @@
 <rel_mayor_igual>       ::= <op_greatherte> <delimitador_izq> <expresion_aritmetica> <coma> <expresion_aritmetica> <delimitador_der>
 
 <expresion_aritmetica>  ::= <termino_arit> | <termino_arit> <op_suma_RESTA> <expresion_aritmetica>
-<op_suma_RESTA>         ::= <op_suma> | <op_resta>
+<op_suma_resta>         ::= <op_suma> | <op_resta>
 
 <termino_arit>          ::= <factor_arit> | <factor_arit> <op_mult_DIV_MOD> <termino_arit>
 <op_mult_DIV_MOD>       ::= <op_mult> | <op_div> | <op_modulo>
