@@ -57,7 +57,8 @@
 <exp_relacional>     ::= <op_rel_func> <delimitador_izq> <exp_aritmetica> <coma> <exp_aritmetica> <delimitador_der>
                        | <exp_aritmetica>
 
-<op_rel_func>        ::= "equal" | "n_equal" | "less_t" | "less_te" | "greather_t" | "greather_te"
+<op_rel_func>        ::= <equal> | <n_equal> | <less_t> | <less_te> | <greather_t> | <greather_te>
+
 
 <exp_aritmetica>     ::= <term_arit> <exp_aritmetica_p>
 <exp_aritmetica_p>   ::= <op_suma_resta> <exp_aritmetica> | " "
@@ -89,7 +90,7 @@
 <entero_sin_cero>    ::= <digito_sin_cero> <digitos_opc>
 <digitos_opc>        ::= <digitos> | " "
 
-<bool_val>           ::= "true" | "false" | "1" | "0"
+<bool_val>           ::=  <true> | <false> | <uno> | <cero>
 <char_val>           ::= <comilla> <char> <comilla>
 <string_val>         ::= <comillas> <texto_linea> <comillas>
 
@@ -105,9 +106,9 @@
 <contenido_nombre_opc> ::= <contenido_nombre> | " "
 <contenido_nombre>   ::= <letra> <contenido_nombre_opc> | <digito> <contenido_nombre_opc>
 
-<entero>             ::= <negativo> <entero_positivo> | <entero_positivo> | "0"
+<entero>             ::= <negativo> <entero_positivo> | <entero_positivo> | <cero>
 <entero_positivo>    ::= <digito_sin_cero> <digitos_opc>
-<flotante>           ::= <entero> "." <digitos>
+<flotante>           ::= <entero> <punto> <digitos>
 
 <digitos>            ::= <digito> <digitos_opc>
 <digito>             ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
@@ -121,6 +122,18 @@
 
 <comentario>         ::= <inicio_linea_texto> <texto_linea> | <inicio_multitexto> <texto_multi> <fin_multitexto>
 
+
+<punto>              ::= "."
+<true>               ::= "true"
+<false>              ::= "false"
+<uno>                ::= "1"
+<cero>               ::= "0"
+<equal>              ::= "equal"
+<n_equal>            ::= "n_equal"
+<less_t>             ::= "less_t"
+<less_te>            ::= "less_te"
+<greather_t>         ::= "greather_t"
+<greather_te>        ::= "greather_te"
 <salto_linea>        ::= "\n"
 <inicio_multitexto>  ::= "{-"
 <fin_multitexto>     ::= "-}"
