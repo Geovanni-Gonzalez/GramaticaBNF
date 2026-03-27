@@ -1,12 +1,12 @@
 <programa>           ::= <lista_global> <procedimiento_main>
 
-<lista_global>       ::= <definicion> <lista_global> | <vacio>
+<lista_global>       ::= <definicion> <lista_global> | " "
 <definicion>         ::= <funcion> | <comentario>
 
 <procedimiento_main> ::= <empty> <separador> <main> <delimitador_izq> <delimitador_der> <bloque>
 
 <bloque>             ::= <inicio_bloque> <lista_sentencias> <fin_bloque>
-<lista_sentencias>   ::= <sentencia> <lista_sentencias> | <vacio>
+<lista_sentencias>   ::= <sentencia> <lista_sentencias> | " "
 
 <sentencia>          ::= <sentencia_simple> <terminador> 
                        | <estructura_control>
@@ -23,56 +23,62 @@
 <estructura_control> ::= <if_else> | <do_while> | <switch_case>
 
 <if_else>            ::= <if> <separador> <delimitador_izq> <expresion> <delimitador_der> <bloque> <opcional_else>
-<opcional_else>      ::= <separador> <else> <bloque> | <vacio>
+<opcional_else>      ::= <separador> <else> <bloque> | " "
 
 <do_while>           ::= <do> <bloque> <while> <separador> <delimitador_izq> <expresion> <delimitador_der> <terminador>
 
 <switch_case>        ::= <switch> <separador> <delimitador_izq> <expresion> <delimitador_der> <inicio_bloque> <lista_casos> <fin_bloque>
-<lista_casos>        ::= <case> <separador> <valor> <dos_puntos> <lista_sentencias> <lista_casos> 
-                       | <default> <dos_puntos> <lista_sentencias> | <vacio>
+<lista_casos>        ::= <case_regla> <lista_casos> | <default_regla> | " "
+<case_regla>         ::= <case> <separador> <valor> <dos_puntos> <lista_sentencias>
+<default_regla>      ::= <default> <dos_puntos> <lista_sentencias>
 
 <lectura_escritura>  ::= <cin> <delimitador_izq> <nombre_variable> <delimitador_der>
                        | <cout> <delimitador_izq> <expresion> <delimitador_der>
 
 <creacion_variable>  ::= <tipo> <separador> <nombre_variable> <opcional_asig_inicial>
-<opcional_asig_inicial> ::= <flecha_asig> <expresion> | <vacio>
+<opcional_asig_inicial> ::= <flecha_asig> <expresion> | " "
 
 <asignacion_variable> ::= <nombre_variable> <flecha_asig> <expresion>
 <asignacion_arreglo>  ::= <nombre_variable> <asignador_arr> <valor>
 
 <funcion>            ::= <tipo_retorno> <separador> <nombre_variable> <delimitador_izq> <parametros> <delimitador_der> <bloque>
 <tipo_retorno>       ::= <tipo_int> | <tipo_float> | <tipo_bool> | <tipo_char>
-<parametros>         ::= <tipo> <separador> <nombre_variable> <mas_params> | <vacio>
-<mas_params>         ::= <coma> <tipo> <separador> <nombre_variable> <mas_params> | <vacio>
+<parametros>         ::= <tipo> <separador> <nombre_variable> <mas_params> | " "
+<mas_params>         ::= <coma> <tipo> <separador> <nombre_variable> <mas_params> | " "
 
 <expresion>          ::= <exp_logica>
 
-<exp_logica>         ::= <term_logico> | <term_logico> <op_disyuncion> <exp_logica>
-<term_logico>        ::= <fact_logico> | <fact_logico> <op_conjuncion> <term_logico>
+<exp_logica>         ::= <term_logico> <exp_logica_p>
+<exp_logica_p>       ::= <op_disyuncion> <exp_logica> | " "
+<term_logico>        ::= <fact_logico> <term_logico_p>
+<term_logico_p>      ::= <op_conjuncion> <term_logico> | " "
 <fact_logico>        ::= <exp_relacional> | <op_negacion> <fact_logico>
 
 <exp_relacional>     ::= <op_rel_func> <delimitador_izq> <exp_aritmetica> <coma> <exp_aritmetica> <delimitador_der>
                        | <exp_aritmetica>
 
-<op_rel_func>        ::= <operador_equal> | <operador_n_equal> | <operador_less_t> | <operador_less_te> | <operador_greather_t> | <operador_greather_te>
+<op_rel_func>        ::= "equal" | "n_equal" | "less_t" | "less_te" | "greather_t" | "greather_te"
 
-<exp_aritmetica>     ::= <term_arit> | <term_arit> <op_suma_resta> <exp_aritmetica>
+<exp_aritmetica>     ::= <term_arit> <exp_aritmetica_p>
+<exp_aritmetica_p>   ::= <op_suma_resta> <exp_aritmetica> | " "
 <op_suma_resta>      ::= <operador_suma> | <operador_resta>
 
-<term_arit>          ::= <fact_arit> | <fact_arit> <op_mult_div_mod> <term_arit>
+<term_arit>          ::= <fact_arit> <term_arit_p>
+<term_arit_p>        ::= <op_mult_div_mod> <term_arit> | " "
 <op_mult_div_mod>    ::= <operador_multiplicacion> | <operador_division> | <operador_modulo>
 
 <fact_arit>          ::= <potencia_aritmetica> | <operadores_unarios> <fact_arit>
 <operadores_unarios> ::= <negativo> | <operador_incremento> | <operador_decremento>
 
-<potencia_aritmetica> ::= <primario> | <primario> <operador_potencia> <potencia_aritmetica>
+<potencia_aritmetica> ::= <primario> <potencia_aritmetica_p>
+<potencia_aritmetica_p> ::= <operador_potencia> <potencia_aritmetica> | " "
 
 <primario>           ::= <valor> | <nombre_variable> | <acceso_indice> | <llamada_func> | <agrupacion>
 <agrupacion>         ::= <delimitador_izq> <expresion> <delimitador_der>
 
 <llamada_func>       ::= <nombre_variable> <delimitador_izq> <argumentos> <delimitador_der>
-<argumentos>         ::= <expresion> <mas_args> | <vacio>
-<mas_args>           ::= <coma> <expresion> <mas_args> | <vacio>
+<argumentos>         ::= <expresion> <mas_args> | " "
+<mas_args>           ::= <coma> <expresion> <mas_args> | " "
 
 <tipo>               ::= <tipo_int> | <tipo_float> | <tipo_bool> | <tipo_string> | <tipo_arr_int> | <tipo_arr_float> | <tipo_char>
 
@@ -80,33 +86,38 @@
 
 <entero_exp>         ::= <entero> <operador_exponencial> <digitos> | <entero>
 <fraccionario>       ::= <entero> <operador_division> <entero_sin_cero>
-<entero_sin_cero>    ::= <digito_sin_cero> <digitos> | <digito_sin_cero>
-<bool_val>           ::= <true> | <false> | <uno> | <cero>
+<entero_sin_cero>    ::= <digito_sin_cero> <digitos_opc>
+<digitos_opc>        ::= <digitos> | " "
+
+<bool_val>           ::= "true" | "false" | "1" | "0"
 <char_val>           ::= <comilla> <char> <comilla>
 <string_val>         ::= <comillas> <texto_linea> <comillas>
 
 <acceso_indice>      ::= <nombre_variable> <abrir_indice> <entero> <cerrar_indice>
 <arreglo_bidimensional> ::= <corchete_izq> <filas> <corchete_der>
-<filas>              ::= <corchete_izq> <elementos> <corchete_der> | <corchete_izq> <elementos> <corchete_der> <coma> <filas>
-<elementos>          ::= <valor_simple> | <valor_simple> <coma> <elementos>
+<filas>              ::= <corchete_izq> <elementos> <corchete_der> <filas_p>
+<filas_p>            ::= <coma> <filas> | " "
+<elementos>          ::= <valor_simple> <elementos_p>
+<elementos_p>        ::= <coma> <elementos> | " "
 <valor_simple>       ::= <entero> | <flotante>
 
-<nombre_variable>    ::= <letra> <contenido_nombre> | <letra>
-<contenido_nombre>   ::= <letra> <contenido_nombre> | <digito> <contenido_nombre> | <letra> | <digito>
+<nombre_variable>    ::= <letra> <contenido_nombre_opc>
+<contenido_nombre_opc> ::= <contenido_nombre> | " "
+<contenido_nombre>   ::= <letra> <contenido_nombre_opc> | <digito> <contenido_nombre_opc>
 
-<entero>             ::= <negativo> <entero_positivo> | <entero_positivo> | <cero>
-<entero_positivo>    ::= <digito_sin_cero> <digitos> | <digito_sin_cero>
+<entero>             ::= <negativo> <entero_positivo> | <entero_positivo> | "0"
+<entero_positivo>    ::= <digito_sin_cero> <digitos_opc>
 <flotante>           ::= <entero> "." <digitos>
 
-<digitos>            ::= <digito> <digitos> | <digito>
+<digitos>            ::= <digito> <digitos_opc>
 <digito>             ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
 <digito_sin_cero>    ::= "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
 <letra>              ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
 
 <char>               ::= <letra> | <digito> | <simbolo> | " "
 <simbolo>            ::= "!" | "@" | "#" | "$" | "%" | "^" | "&" | "*" | "(" | ")" | "-" | "+" | "=" | "[" | "]" | "{" | "}" | ";" | ":" | "," | "." | "/" | "<" | ">" | "?"
-<texto_linea>        ::= <char> <texto_linea>  | <vacio>
-<texto_multi>        ::= <char> <texto_multi> |  <salto_linea> <texto_multi> | <vacio>
+<texto_linea>        ::= <char> <texto_linea> | " "
+<texto_multi>        ::= <char> <texto_multi> | <salto_linea> <texto_multi> | " "
 
 <comentario>         ::= <inicio_linea_texto> <texto_linea> | <inicio_multitexto> <texto_multi> <fin_multitexto>
 
@@ -128,8 +139,8 @@
 <negativo>           ::= "-"
 <operador_incremento> ::= "++"
 <operador_decremento> ::= "--"
-<operador_conjuncion> ::= "@"
-<operador_disyuncion> ::= "#"
+<op_conjuncion>      ::= "@"
+<op_disyuncion>      ::= "#"
 <op_negacion>        ::= "$"
 <empty>              ::= "empty"
 <main>               ::= "__main__"
@@ -137,10 +148,6 @@
 <corchete_der>       ::= "]"
 <comillas>           ::= "\""
 <comilla>            ::= "'"
-<true>               ::= "true"
-<false>              ::= "false"
-<uno>                ::= "1"
-<cero>               ::= "0"
 <operador_multiplicacion> ::= "*"
 <operador_division>    ::= "/"
 <operador_modulo>      ::= "%"
@@ -148,12 +155,6 @@
 <operador_potencia>    ::= "^"
 <operador_suma>        ::= "+"
 <operador_resta>       ::= "-"
-<operador_equal>       ::= "equal"
-<operador_n_equal>     ::= "n_equal"
-<operador_less_t>      ::= "less_t"
-<operador_less_te>     ::= "less_te"
-<operador_greather_t>  ::= "greather_t"
-<operador_greather_te> ::= "greather_te"
 <tipo_int>             ::= "int"
 <tipo_float>           ::= "float"
 <tipo_bool>            ::= "bool"
@@ -173,4 +174,3 @@
 <break>              ::= "break"
 <return>             ::= "return"
 <dos_puntos>         ::= ":"
-<vacio>              ::=
