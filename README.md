@@ -1,34 +1,66 @@
-# Gramática BNF para Configuración de Microchips 🚀
-> **Curso:** Compiladores e Intérpretes  
-> **Institución:** Tecnológico de Costa Rica (TEC)  
-> **Estudiante:** Geovanni González Aguilar   
-> **Profesor:** Allan Rodríguez  
+﻿# Gramatica BNF
 
-## 📌 Descripción del Proyecto
-Este repositorio contiene la definición formal de la gramática **BNF (Backus-Naur Form)** para un lenguaje de programación de paradigma imperativo. El lenguaje ha sido diseñado específicamente para la configuración de dispositivos electrónicos (chips), priorizando un tipado fuerte, una sintaxis ligera y el manejo preciso de operaciones aritméticas y estructuras bidimensionales.
+## Descripción
+Definícion BNF para un lenguaje educativo orientado a configuración de microchips. Incluye gramática, diagrama y documentación.
 
-## 🛠 Características del Lenguaje
-- **Tipado Explicito:** Uso obligatorio de tipos (`int`, `float`, `bool`, `char`, `string`).
-- **Sintaxis de Chip:** Delimitadores de bloque únicos (`|:` y `:|`) y separadores de instrucción (`~`).
-- **Operaciones Avanzadas:** Soporte nativo para notación exponencial (`100e10`) y fraccionarios (`5/6`).
-- **Seguridad:** Operadores relacionales implementados como funciones (`equal`, `less_t`, etc.) para evitar ambigüedades.
-- **Estructura:** Punto de entrada obligatorio mediante `empty ~ __main__ <| |>`.
+## Objetivo
+Formalizar la sintaxis de un lenguaje como base para análisis léxico y sintáctico.
 
-## 📂 Estructura del Repositorio
-- `gramatica.bnf`: Archivo principal con las reglas de producción.
-- `ejemplos/`: Carpeta con scripts de prueba (casos difíciles, switch-case, arreglos).
-- `README.md`: Documentación general del proyecto.
+## Tecnologías utilizadas
+- BNF
+- Markdown
+- HTML
+- Documentación formal
 
-## 🚀 Cómo Probar la Gramática
-Para validar la sintaxis de este lenguaje, se recomienda utilizar **BNF Playground**:
+## Funcionalidades principales
+- Archivo tarea.bnf
+- Diagrama Markdown/HTML
+- PDF de soporte
+- Descripción de tipos e instrucciones
 
-1. Copia el contenido de `gramatica.bnf`.
-2. Ve a [BNF Playground](https://bnfplayground.pauliankline.com/).
-3. Pega el código en el área de la gramática.
-4. En el cuadro de prueba, ingresa el siguiente código "Hola Mundo" del lenguaje:
+## Mi rol
+Diseñé y documenté la gramática para revisión académica.
 
-```cpp
-empty ~ __main__ <| |> 
-|:
-    cout <| "Sistema Iniciado" |> !
-:|
+## Aprendizajes clave
+- Definícion formal
+- BNF
+- Relación gramática/parser
+- Reglas de producción
+
+## Instalación y ejecución
+No requiere instalación. Abrir `tarea.bnf` en un editor o herramienta compatible con BNF.
+
+## Estructura del proyecto
+- tarea.bnf: gramática
+- diagram.md/html: visual
+- Documentación.pdf: soporte
+- info.txt: entrega
+
+## Capturas o demo
+Por documentar. Se recomienda agregar capturas de la pantalla principal o un GIF corto de uso.
+
+## Estado del proyecto
+Proyecto académico documental.
+
+## Valor técnico demostrado
+Demuestra base teórica para diseño de lenguajes.
+
+## Mejoras futuras
+- Agregar ejemplos
+- Documentar convenciones léxicas
+- Vincular con analizador
+
+## Autor
+Geovanni González  
+Estudiante de Ingeniería en Computación  
+GitHub: [Geovanni-Gonzalez](https://github.com/Geovanni-Gonzalez)
+
+
+
+
+
+
+
+
+
+
