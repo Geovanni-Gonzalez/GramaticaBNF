@@ -42,6 +42,9 @@ Por documentar. Se recomienda agregar capturas de la pantalla principal o un GIF
 ## Estado del proyecto
 Proyecto académico documental.
 
+## Licencia
+MIT.
+
 ## Valor técnico demostrado
 Demuestra base teórica para diseño de lenguajes.
 
