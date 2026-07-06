@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    name: Validate grammar docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check documentation files
+        run: |
+          test -s tarea.bnf
+          test -s README.md
+          test -s diagram.md
+          test -s diagram.html
+          grep -Eq "::=|<.*>" tarea.bnf

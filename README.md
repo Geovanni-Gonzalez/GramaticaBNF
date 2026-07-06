@@ -64,3 +64,4 @@ GitHub: [Geovanni-Gonzalez](https://github.com/Geovanni-Gonzalez)
 
 
 
+![CI](https://github.com/Geovanni-Gonzalez/GramaticaBNF/actions/workflows/ci.yml/badge.svg)
